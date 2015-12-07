@@ -1,0 +1,81 @@
+.stack-pane {	
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-size: 12px;
+	-fx-font-weight: normal;
+}
+
+.text-field {
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-size: 12px;
+	-fx-font-weight: normal;
+}
+
+.label {
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-size: 12px;	
+	-fx-font-weight: normal;
+}
+
+.cell {
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-cell-size: 40pt;	
+	-fx-alignment: CENTER-LEFT;
+	-fx-font-size: 12pt;
+	-fx-font-weight: normal;
+}
+
+#titlePane {
+	-fx-background-color: #00cc00;
+	-fx-border-color:  white;
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-weight: bold;
+	-fx-font-size: 13pt;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#dark-blue-button {
+    -fx-background-color: 
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-weight: normal;
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 8pt;
+    -fx-padding: 8 10 8 10;
+}
+#dark-blue-button Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+}
+
+#log {
+	-fx-font-family: "Segoe UI Semibold";	
+	-fx-font-size: 8pt;
+}
+
+#clientView {
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-size: 8pt;	
+}
+
+#cellCenter {
+	-fx-alignment: CENTER;
+}
+
+#cellCenterBold {
+	-fx-alignment: CENTER;
+	-fx-font-weight: bold;
+	-fx-text-fill: Navy;
+}
+
+#cellBold {
+	-fx-font-weight: bold;
+	-fx-text-fill: Navy;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane fx:id="pane" prefHeight="192.0" prefWidth="510.0" style="-fx-background-color: #e5ffe5;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <children>
+      <VBox fx:id="vb1Serwis" spacing="5.0">
+         <children>
+            <HBox spacing="5.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="390.0" prefWidth="173.0" spacing="5.0" style="-fx-border-radius: 5; -fx-border-color: gray;" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <Button fx:id="btnGroup" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Grupa / Sektor" />
+                        <Button fx:id="btnNoName" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Przypisz moduły ESP" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="btnZakoncz" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Zakończ program" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="390.0" prefWidth="188.0" spacing="5.0" style="-fx-border-radius: 5; -fx-border-color: gray;" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="btnZamknij" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Zamknij" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

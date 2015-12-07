@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane fx:id="pane" prefHeight="214.0" prefWidth="367.0" style="-fx-background-color: #e5ffe5;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox style="-fx-border-radius: 5; -fx-border-width: 2; -fx-border-color: gray;">
+         <children>
+            <TableView fx:id="tvGroup" prefHeight="266.0" prefWidth="384.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colName" prefWidth="75.0" text="Grupa / Sektor" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="596.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnDodaj" mnemonicParsing="false" text="Dodaj" />
+                  <Button fx:id="btnZmien" mnemonicParsing="false" text="Edytuj" />
+                  <Button fx:id="btnUsun" mnemonicParsing="false" text="Usuń" />
+                  <Region prefHeight="25.0" prefWidth="42.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnWybierz" minWidth="80.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Wybierz" />
+                  <Button fx:id="btnZamknij" mnemonicParsing="false" text="Zamknij" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</StackPane>

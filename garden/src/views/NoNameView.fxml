@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane fx:id="pane" prefHeight="214.0" prefWidth="467.0" style="-fx-background-color: #e5ffe5;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="vbGroup" style="-fx-border-radius: 5; -fx-border-width: 2; -fx-border-color: gray;">
+         <children>
+            <TableView fx:id="tvNoName" prefHeight="266.0" prefWidth="596.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colMac" prefWidth="75.0" text="MAC adres" />
+                  <TableColumn fx:id="colPorty" prefWidth="75.0" text="GPIO porty" />
+                  <TableColumn fx:id="colKonfig" prefWidth="75.0" text="GPIO konfig" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <HBox fx:id="hbMenu" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="596.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnPrzypisz" mnemonicParsing="false" text="Przypisz" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnZamknij" mnemonicParsing="false" text="Zamknij" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</StackPane>
