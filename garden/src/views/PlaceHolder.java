@@ -35,8 +35,7 @@ public class PlaceHolder {
 	 * 
 	 */
 	public static Pane getHolder(int opc) {
-		
-		Pane pane;
+
 		
 		if(instance==null){
 			instance = new PlaceHolder();
@@ -56,13 +55,11 @@ public class PlaceHolder {
 		case 0: {
 			instance.imageView.setVisible(false);
 			instance.label.setText("Brak danych do wyświetlenia...");
-			pane = box;
 			break;
 		}
 		case 1: {
 			instance.imageView.setVisible(true);
 			instance.label.setText("Proszę czekać.... Trwa ładowanie danych.");
-			pane = box;
 			break;
 		}
 		case 2: {
@@ -80,8 +77,6 @@ public class PlaceHolder {
 			stackPane.setMouseTransparent(false);
 			
 			stackPane.getChildren().add(box);
-			
-			pane = stackPane;
 
 			break;
 		}

@@ -28,6 +28,7 @@ public class ClientConnection extends Thread {
 		try {
 			clientSocket.close();
 		} catch (IOException e) {
+			System.err.println(e.getMessage());
 		}
 		
 	}
@@ -44,6 +45,7 @@ public class ClientConnection extends Thread {
 				analizujDane(line);
 			}
 		} catch (IOException e) {
+			System.err.println(e.getMessage());
 		} finally {
 			stopClient();
 		}
@@ -54,13 +56,20 @@ public class ClientConnection extends Thread {
 			Character msgType = msg.charAt(0);
 			System.out.println("msgType: "+msgType.toString());
 			if(msgType.toString()=="0") {
-			}
-			if(msgType.toString().equals("0")) {
 				String mac = msg.substring(1, 18);
+				Common.LOG.add("<Socket client> - " + ipAddress +": " + msg);
+				System.out.println("Sprawdzam MAC w bazie....");
 				EspModul esp = Dao.daoEspModul.get(mac);
 				if(esp!=null) {
-					Common.LOG.add("Klient: "+esp.getModulName());
-				} else {
+					Common.LOG.add("Klient: "+esp.getModulName());	
+				}
+				System.out.println("Mac: "+esp);
+			}
+			if(msgType.toString().equals("1")) {
+				String mac = msg.substring(1, 18);
+				EspModul esp = Dao.daoEspModul.get(mac);
+				if(esp==null) {
+					System.out.println(msg);
 					NoName noName = Dao.daoNoName.get(mac);
 					if(noName==null) {
 						noName = new NoName();
@@ -70,7 +79,6 @@ public class ClientConnection extends Thread {
 						Dao.daoNoName.zapisz(noName);
 					}
 				}
-				
 			}
 			System.out.println("finito");
 		} else {
