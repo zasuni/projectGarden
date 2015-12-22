@@ -14,6 +14,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import library.walidator.TypCechy;
@@ -43,6 +44,8 @@ public class EspKonfigController {
 	@FXML private Button btnZmien;
 	@FXML private Button btnZamknij;
 	@FXML private Button btnGrupa;
+	
+	@FXML private HBox hbMenu;
 	
 	private Pane parent;
 	private EspModul espModul;
@@ -84,16 +87,18 @@ public class EspKonfigController {
 		case 0 : {
 			tvDevice.setVisible(false);
 			btnZmien.setVisible(false);
+			Platform.runLater(()-> tfNazwa.requestFocus());
 			break;
 		}
 		case 1 : {
-			btnZapisz.setVisible(false);
+			showGrupa();
+			tfNazwa.setText(this.espModul.getModulName());
+			hbMenu.getChildren().remove(btnZapisz);
 			refresh();
+			Platform.runLater(()-> tvDevice.requestFocus());
 			break;
 		}
 		}
-		
-		Platform.runLater(()-> tfNazwa.requestFocus());
 	}
 	
 	private void close() {

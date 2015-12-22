@@ -17,7 +17,7 @@ public class DaoFactory {
 	public void makeConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://192.168.43.233/garden?user=gardenuser&password=garden@123");
+            con = DriverManager.getConnection("jdbc:mysql://i-soft.com.pl/zanussi_garden?user=zanussi_ugarden&password=garden@123");
             Common.LOG.add("Nawiązano połączenie z MySQL");
 			Common.STATUS_BAR.dbServerStatus.set(1);
 		} catch (Exception e) {

@@ -2,12 +2,15 @@ package controllers;
 
 import java.io.IOException;
 
+import application.Common;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import model.EspModul;
+import modelDao.EspModulDao;
 import resources.src.Icons;
 import views.MainView;
 import views.titlePane.TitlePane;
@@ -20,6 +23,7 @@ public class SerwisController {
 	@FXML private Button btnNoName;
 	@FXML private Button btnZamknij;
 	@FXML private Button btnZakoncz;
+	@FXML private Button btnKonfigEsp;
 	
 	private Pane parent;
 	
@@ -49,11 +53,13 @@ public class SerwisController {
 	public void init() {	
 		btnGroup.setGraphic(Icons.getIcon(Icons.FOLDER_16));
 		btnNoName.setGraphic(Icons.getIcon(Icons.PRZYPISZ_16));
+		btnKonfigEsp.setGraphic(Icons.getIcon(Icons.PRZYPISZ_16));
 		btnZamknij.setGraphic(Icons.getIcon(Icons.ZAMKNIJ_16));
 		btnZakoncz.setGraphic(Icons.getIcon(Icons.WYLOGUJ_16));
 
-		btnNoName.setId("dark-blue-button");		
 		btnGroup.setId("dark-blue-button");		
+		btnNoName.setId("dark-blue-button");		
+		btnKonfigEsp.setId("dark-blue-button");		
 		btnZamknij.setId("dark-blue-button");
 		btnZakoncz.setId("dark-blue-button");
 		
@@ -65,6 +71,7 @@ public class SerwisController {
 			NoNameController nn = new NoNameController();
 			nn.show(this.parent);
 		});
+		btnKonfigEsp.setOnAction(a-> konfigESP());
 		btnZamknij.setOnAction(a->close());		
 		btnZakoncz.setOnAction(a->System.exit(0));
 		
@@ -77,5 +84,13 @@ public class SerwisController {
 		return this.pane;
 	}
 	
+	
+	private void konfigESP(){
+		EspModulDao<EspModul> daoModul = new EspModulDao<EspModul>(Common.daoFactory, false);
+		EspModul espModul = daoModul.get(1);
+		EspKonfigController espKonfigFrm = new EspKonfigController();
+		espKonfigFrm.show(this.parent, espModul, null, 1);
+		espModul.setIdGroup(-1);
+	}
 	
 }

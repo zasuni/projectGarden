@@ -22,6 +22,7 @@
                      <children>
                         <Button fx:id="btnGroup" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Grupa / Sektor" />
                         <Button fx:id="btnNoName" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Przypisz moduły ESP" />
+                        <Button fx:id="btnKonfigEsp" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Konfiguracja ESP" />
                         <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                         <Button fx:id="btnZakoncz" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Zakończ program" />
                      </children>

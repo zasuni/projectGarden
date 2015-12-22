@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<StackPane fx:id="pane" prefHeight="262.0" prefWidth="476.0" style="-fx-background-color: #e5ffe5;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox style="-fx-border-radius: 5; -fx-border-width: 2; -fx-border-color: gray;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Nazwa grupy:" />
+                  <TextField fx:id="tfNazwa" prefHeight="25.0" prefWidth="335.0" />
+               </children>
+            </HBox>
+            <HBox fx:id="hbMenu" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="596.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnZapisz" mnemonicParsing="false" text="Zapisz" />
+                  <Button fx:id="btnAnuluj" mnemonicParsing="false" text="Anuluj" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</StackPane>
