@@ -101,17 +101,19 @@ public class EspDeviceDao<T extends EspDevice> implements DaoInterface<T> {
 
 
 	@Override
-	public boolean zmien(T esp) {
-
-		boolean wynik = false;
-		long kodBledu = 0;
-		
+	public boolean zmien(T item) {
+		long wynik = 0;
 		try {
-			wynik=kodBledu==0;
+			CallableStatement cstmt = con.prepareCall("{call updateDevice (?, ?, ?)}");
+			cstmt.setLong(1, item.getId());
+			cstmt.setString(2, item.getDeviceName());
+			cstmt.registerOutParameter(3, java.sql.Types.INTEGER);
+			cstmt.execute();
+			wynik = cstmt.getLong(3);
+			if (wynik<=0) Common.LOG.add("Nie udało się zapisać zmian !");
 		} catch (Exception e) {
-		}
-		
-		return wynik;
+		}		
+		return wynik>0;
 	}
 
 	@Override

@@ -157,10 +157,19 @@ public class EspKonfigController {
 		});
 		btnZapisz.setOnAction(a-> przypisz());
 		btnZamknij.setOnAction(a-> close());
+		btnZmien.setOnAction(a->zmien());
 		
 		walidacja();
 	}
-	
+
+
+	private void zmien() {
+		EspDevice item = tvDevice.getSelectionModel().getSelectedItem();
+		if(item!=null) {
+			DeviceEditController editFrm = new DeviceEditController();
+			editFrm.show(parent, item, 1);	
+		}
+	}
 	
 	private void walidacja() {
 		Platform.runLater(new Runnable() {
