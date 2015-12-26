@@ -99,11 +99,7 @@ public class EspModulDao<T extends EspModul> implements DaoInterface<T> {
 			cstmt.setString(3, item.getModulName());
 			cstmt.registerOutParameter(4, java.sql.Types.INTEGER);
 			cstmt.execute();
-
-			System.out.println("noName.getId(): "+noName.getId());
-			System.out.println("item.getIdGroup(): "+item.getIdGroup());
-			System.out.println("item.getModulName()): "+item.getModulName());
-			
+		
 			item.setId(cstmt.getLong(4));
 
 			if (item.getId()>0) {
@@ -119,16 +115,37 @@ public class EspModulDao<T extends EspModul> implements DaoInterface<T> {
 	}
 
 	@Override
-	public boolean zmien(T esp) {
-
-		boolean wynik = false;
-		long kodBledu = 0;
+	public boolean zmien(T item) {
+		boolean wynik=false;
+		try {	
+			CallableStatement cstmt = con.prepareCall("{call updateEspModul(?, ?, ?, ?, ?, ?, ?, ?)}");
+			cstmt.setLong(1, item.getId());
+			cstmt.setLong(2, item.getIdGroup());
+			cstmt.setString(3, item.getMac());
+			cstmt.setString(4, item.getGpioUsed());
+			cstmt.setString(5, item.getGpioType());
+			cstmt.setString(6, item.getGpioState());
+			cstmt.setString(7, item.getModulName());
+			cstmt.registerOutParameter(8, java.sql.Types.INTEGER);
+			
+			System.err.println("1:"+item.getId());
+			System.err.println("2:"+item.getIdGroup());
+			System.err.println("3:"+item.getMac());
+			System.err.println("4:"+item.getGpioUsed());
+			System.err.println("5:"+item.getGpioType());
+			System.err.println("6:"+item.getGpioState());
+			System.err.println("7:"+item.getModulName());
+			
+			
+			cstmt.execute();
 		
-		try {
-			wynik=kodBledu==0;
-		} catch (Exception e) {
+			wynik=cstmt.getInt(8)>0;
+	
+			if (!wynik) Common.LOG.add("Błąd aktualizacji modułu !");
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		
 		return wynik;
 	}
 
@@ -139,6 +156,9 @@ public class EspModulDao<T extends EspModul> implements DaoInterface<T> {
 		item.setId(rs.getLong("id"));
 		item.setIdGroup(rs.getLong("idGroup"));
 		item.setMac(rs.getString("mac"));
+		item.setGpioUsed(rs.getString("gpioUsed"));
+		item.setGpioType(rs.getString("gpioType"));
+		item.setGpioState(rs.getString("gpioState"));
 		item.setModulName(rs.getString("modulName"));
 
 		return item;

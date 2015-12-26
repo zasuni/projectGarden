@@ -90,7 +90,7 @@ public class SerwisController {
 		EspModul espModul = daoModul.get(1);
 		EspKonfigController espKonfigFrm = new EspKonfigController();
 		espKonfigFrm.show(this.parent, espModul, null, 1);
-		espModul.setIdGroup(-1);
+//		espModul.setIdGroup(-1);
 	}
 	
 }

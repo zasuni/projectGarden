@@ -52,6 +52,8 @@ public class EspKonfigController {
 	private NoName noName;
 	private Group grupa;
 	private Walidacja walidacja = new Walidacja();
+	private int opc;
+	private boolean saveBtnActivated = true;
 	
 	public EspKonfigController() {
 		FXMLLoader fxmlLoader = null;		
@@ -76,15 +78,16 @@ public class EspKonfigController {
 		this.parent=parent;
 		this.espModul=espModul;
 		this.noName=noName;
+		this.opc=opc;
 		parent.getChildren().add(this.pane);
 		init();
 		
 		tfMac.setText(this.espModul.getMac());
 		tfMac.setEditable(false);
 		tfGrupa.setEditable(false);
-
-		switch(opc) {
+		switch(this.opc) {
 		case 0 : {
+			saveBtnEnabled();
 			tvDevice.setVisible(false);
 			btnZmien.setVisible(false);
 			Platform.runLater(()-> tfNazwa.requestFocus());
@@ -121,6 +124,8 @@ public class EspKonfigController {
 		colNazwa.setCellValueFactory(k->k.getValue().deviceNameProperty());
 		colSygnal.setCellValueFactory(k->k.getValue().gpioTypeProperty());
 		
+		colPort.setId("cellCenterBold");
+		
 		colSygnal.setCellFactory( p -> {			
 			TableCell<EspDevice, Number> cell = new TableCell<EspDevice, Number>() {				
 				@Override
@@ -150,7 +155,11 @@ public class EspKonfigController {
 			return cell;
 		});
 		
-		espModul.idGroupProperty().addListener((v,ov,nv)->showGrupa());
+		espModul.idGroupProperty().addListener((v,ov,nv)-> {
+			showGrupa();
+			saveBtnEnabled();
+		});
+		
 		btnGrupa.setOnAction(a-> {
 			GroupController gp = new GroupController();
 			gp.show(this.parent, 1, espModul);
@@ -159,9 +168,26 @@ public class EspKonfigController {
 		btnZamknij.setOnAction(a-> close());
 		btnZmien.setOnAction(a->zmien());
 		
+		tfNazwa.setOnKeyTyped(k->saveBtnEnabled());
+		
 		walidacja();
+		saveBtnDisabled();
 	}
 
+	
+	private void saveBtnEnabled() {
+		if(!saveBtnActivated) {
+			hbMenu.getChildren().add(0, btnZapisz);
+			saveBtnActivated=true;
+		}
+	}
+	
+	private void saveBtnDisabled() {
+		if(saveBtnActivated) {
+			hbMenu.getChildren().remove(btnZapisz);
+			saveBtnActivated=false;
+		}
+	}
 
 	private void zmien() {
 		EspDevice item = tvDevice.getSelectionModel().getSelectedItem();
@@ -191,11 +217,23 @@ public class EspKonfigController {
 	
 	private void przypisz() {
 		espModul.setModulName(tfNazwa.getText());
-		if(Dao.daoEspModul.przypiszModul(espModul, noName)) {
-			btnZmien.setVisible(true);
-			btnZapisz.setVisible(false);
-			tvDevice.setVisible(true);
+		switch (opc) {
+		case 0: {
+			if(Dao.daoEspModul.przypiszModul(espModul, noName)) {
+				btnZmien.setVisible(true);
+				tvDevice.setVisible(true);
+				saveBtnDisabled();
+			}	
+			break;
 		}
+		case 1: {
+			if(Dao.daoEspModul.zmien(espModul)) {
+				saveBtnDisabled();
+			}	
+			break;
+		}
+		}
+
 	}
 	
 	public Pane getPane() {
@@ -204,7 +242,9 @@ public class EspKonfigController {
 	
 	private void showGrupa() {
 		grupa = Dao.daoGroup.get(espModul.getIdGroup());
-		if(grupa!=null) tfGrupa.setText(grupa.getGroupName());
+		if(grupa!=null) {
+			tfGrupa.setText(grupa.getGroupName());
+		}
 	}
 	
 	private void refresh() {
